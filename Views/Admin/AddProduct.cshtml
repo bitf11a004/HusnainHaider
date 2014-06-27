@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "AddProduct";
+}
+@model ShoesShop.Models.Product
+<h2>AddProduct</h2>
+@using (Html.BeginForm("save","Admin", FormMethod.Post)){
+
+    <div> Upload Image: <input type="file" name="image" /> </div>
+<table>
+    
+    
+
+    <tr><td><div class="editor-label">
+            @Html.LabelFor(model => model.PName)
+        </div></td> <td><div class="editor-field">
+            @Html.EditorFor(model => model.PName)
+            @Html.ValidationMessageFor(model => model.PName)
+        </div>  </td></tr>
+
+     <tr><td><div class="editor-label">
+            @Html.LabelFor(model => model.PPrice)
+        </div></td> <td><div class="editor-field">
+            @Html.EditorFor(model => model.PPrice)
+            @Html.ValidationMessageFor(model => model.PPrice)
+        </div>  </td></tr>
+
+     <tr><td><div class="editor-label">
+            @Html.LabelFor(model => model.CountInStock)
+        </div></td> <td><div class="editor-field">
+            @Html.EditorFor(model => model.CountInStock)
+            @Html.ValidationMessageFor(model => model.CountInStock)
+        </div>  </td></tr>
+    
+     
+ </table>
+    <input type="submit" value="upload" />
+
+}

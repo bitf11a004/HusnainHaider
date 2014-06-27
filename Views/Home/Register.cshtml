@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Register";
+}@model ShoesShop.Models.CustomerDetail
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Create a new account.</h2>
+</hgroup>
+
+@using (Html.BeginForm("AddCustomer","Home",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <table>
+
+           <ol>
+
+               <tr><td>
+                   @Html.LabelFor( n=> n.Name)
+                   </td>
+                   <td>
+                         @Html.TextBoxFor(n=> n.Name)
+               
+                 </td></tr>
+            
+            <tr><td>  
+                   @Html.LabelFor( n=> n.UserName)</td>
+                <td>
+                @Html.TextBoxFor(n=> n.UserName)
+                   
+               </td> <td><input type="button" id="b1" value="Check"></td></tr>
+              
+            <tr><td> 
+                   @Html.LabelFor( n=> n.Password)</td>
+                <td>
+                @Html.TextBoxFor(n=> n.Password)
+                </td></tr>
+               
+            <tr><td>
+                   @Html.LabelFor( n=> n.Address)</td>
+                <td>
+                @Html.TextBoxFor(n=> n.Address)
+                 </td></tr>
+               
+            <tr><td>
+                   @Html.LabelFor( n=> n.Phone)</td> <td>
+                @Html.TextBoxFor(n=> n.Phone)
+                 </td></tr>
+               
+            <tr><td> 
+                   @Html.LabelFor( n=> n.Email)
+                </td> <td>
+                @Html.TextBoxFor(n=> n.Email)
+                </td></tr>
+               
+            <tr><td> 
+                   @Html.LabelFor( n=> n.CCNo)
+                </td> <td>
+                @Html.TextBoxFor(n=> n.CCNo)
+                 </td></tr>
+            <tr><td> 
+                   <input type="submit" id="register" value="register">
+                 </td></tr>
+              
+               
+            <div id="checking">Checking...</div>
+<div>
+    <div id="result"></div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var userName = $('#UserName').val();
+
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/Home/CheckUserName?UserName=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</div>
+    </table>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

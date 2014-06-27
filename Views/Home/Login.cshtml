@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Log in";
+}
+@model ShoesShop.Models.CustomerDetail
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+<h2>Use a local account to log in.</h2>
+@using (Html.BeginForm("customerLogin", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <link href="~/Content/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/ddsmoothmenu.css" />
+
+    <fieldset>
+        <legend>Log in Form</legend>
+        <table>
+        <ol>
+            <li>
+                   @Html.LabelFor( n=> n.UserName)
+                @Html.TextBoxFor(n=> n.UserName)
+                </li>
+             <li>
+                   @Html.LabelFor( n=> n.Password)
+                @Html.TextBoxFor(n=> n.Password)
+                </li>
+            </ol>
+       
+        <input type="submit" value="Log in" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>
+}
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
