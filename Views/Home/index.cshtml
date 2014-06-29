@@ -4,12 +4,10 @@
 
 <h2>Shoes store</h2>
 <p>Welcome to acounts Page</p>
-<p>
-@Html.ActionLink("To Login Click here","Login")
-</p>
-<p>
-@Html.ActionLink("To reister Click here","Register")
-</p>
-<p>
-@Html.ActionLink("Admin please click here ","../Admin/Index")
-</p>
+<div id="top_nav" class="ddsmoothmenu">
+            <ul>
+                <li><a href="/Home/Login" class="selected">Login</a></li>
+                <li><a href="/Home/Register">Register</a></li>
+            </ul>
+            <br style="clear: left" / >
+        </div> <!-- end of ddsmoothmenu -->

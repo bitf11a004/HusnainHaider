@@ -80,7 +80,7 @@
 
                 //alert('User Name ='+ userName);
                 $('#checking').show();
-                $.getJSON("/Home/CheckUserName?UserName=" + userName, function (data) {
+                $.getJSON("/Home/CheckUserNa me?UserName=" + userName, function (data) {
                     $('#checking').hide();
                     if (data) {
                         $('#result').text("User already exists in database");

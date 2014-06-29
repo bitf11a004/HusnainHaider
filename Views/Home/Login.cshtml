@@ -27,6 +27,14 @@
                    @Html.LabelFor( n=> n.Password)
                 @Html.TextBoxFor(n=> n.Password)
                 </li>
+            <div>
+            
+                <label >Admin </label>
+                <input name="LogId" type="radio" checked="true" value="Admin" />
+             
+                <label >Customer </label>
+                <input name="LogId" type="radio" value="Customer" />
+                </div>
             </ol>
        
         <input type="submit" value="Log in" />
